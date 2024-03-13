@@ -1,0 +1,40 @@
+<div class="api-key">
+  <input
+    id="api-key-box"
+    [(ngModel)] = "environment.API_KEY"
+  >
+  <label for="api-key-box">Insert api key here. <br>
+  <a href="https://aistudio.google.com/app/apikey">Link to api key creation</a>
+  </label>
+</div>
+
+<div class="app">
+  <p>What do you want to know?
+    <button class="surprise" (click)="surprise()">Surprise me</button>
+  </p>
+  <div class="input-container">
+    <input
+      [(ngModel)]="inputValue"
+      placeholder="When is Christmas...?"
+      onChange=""
+    >
+    <button (click)="fetchData()">Ask Me</button>
+  </div>
+
+  @if (inputError && inputIsEmpty()) { <p>You must type text in the box.</p> }
+
+  @if (environment.API_KEY === "") { <p>You must type insert an api key into the box for the chat to work.</p> }
+
+  @if (apiService.httpError !== "") { <p class="error-msg">Invalid Api key.</p> }
+
+
+  <div class="search-result">
+    <div *ngFor="let chat of chatHistory | async" >
+      <p class="answer">
+        {{chat.role}}: {{chat.parts}}
+      </p>
+    </div>
+  </div>
+
+</div>
+
