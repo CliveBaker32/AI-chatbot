@@ -11,7 +11,7 @@
 1. `docker pull ghcr.io/clivebaker32/ai-chatbot:latest`
 2. `docker build`
 3. `docker run -p 4200:4200 ghcr.io/clivebaker32/ai-chatbot:latest`
-4. `Go to localhost:4200`
+4. Go to localhost:4200 in your web browser to explore the app.
 
 ## Future Development Considerations
 
